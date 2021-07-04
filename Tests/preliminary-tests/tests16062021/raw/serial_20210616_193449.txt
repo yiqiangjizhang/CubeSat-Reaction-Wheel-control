@@ -1,0 +1,13 @@
+19:33:13.551 1
+19:33:13.691 Mode Number: 1
+19:33:13.705 1
+19:33:13.705 Mode Positioning
+19:33:13.728 Positioning begin
+19:33:13.748 Axis Z position: 206.79
+19:33:13.775 Insert degree value to turn
+19:34:04.146 100
+19:34:04.241 Value to turn: 1
+19:34:04.250 Mode Positioning Fine
+19:34:04.325 Value to turn: 0
+19:34:11.186 100
+19:34:11.243 V19:34:31.090 1
