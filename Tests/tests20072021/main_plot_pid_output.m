@@ -8,7 +8,7 @@ set(groot, 'defaultLegendInterpreter', 'latex');
 
 format short
 
-num = 10006;
+num = 10008;
 time_file = sprintf("time2%d.txt", num);
 data_file = sprintf("pid_output%d.txt", num);
 pid_output_plot = sprintf("plots/pid_output_plot%d.pdf", num);
