@@ -1,0 +1,56 @@
+clear;
+close all;
+clc;
+
+set(groot, 'defaultAxesTickLabelInterpreter', 'latex');
+set(groot, 'defaulttextinterpreter', 'latex');
+set(groot, 'defaultLegendInterpreter', 'latex');
+
+format short
+
+load("data1010.mat");
+input1010 = input1010{:,:};
+
+num = 1010;
+
+
+yaw_plot_coarse_fine = sprintf("plots/yaw_plot_coarse_fine%d.pdf", num);
+
+% Time
+A(:,1) = input1010(:,1);
+A(:,2) = input1010(:,2);
+A(:,3) = input1010(:,3);
+
+% Data
+B = importdata(data_file);
+
+pid = B(:, 1);
+
+t = 3600 * A(:, 1) + 60 * A(:, 2) + A(:, 3);
+t = t - t(1);
+
+% PID putput vs time
+h = figure(1);
+title("\textbf{Yaw angle}");
+hold on;
+plot(t, pid, 'color', [0 167 83] / 255);
+scatter(t, pid, 10, [0 167 83] / 255, 'filled');
+xlim([0 ceil(max(t))]);
+xlabel("Time $\left( \mathrm{s} \right)$");
+ylabel("Yaw angle $\left( \mathrm{deg} \right)$");
+set(gcf, 'units', 'points', 'position', [100, 100, 560, 420]);
+
+% xline(0,'-',{'Positioning','Fine'});
+% yline(352,'-',{'Set point'});
+box on;
+grid on;
+grid minor;
+hold off;
+box on;
+hold off;
+
+set(h, 'Units', 'Centimeters');
+pos = get(h, 'Position');
+set(h, 'PaperPositionMode', 'Auto', 'PaperUnits', 'Centimeters', ...
+    'PaperSize', [pos(3), pos(4)]);
+print(h, yaw_plot_coarse_fine, '-dpdf', '-r0');
